@@ -11,6 +11,15 @@ export function status(req, res) {
 export function atacar(req, res) {
 inimigo.hp = inimigo.hp - campeao.ataque 
 
+if(inimigo.hp <=0){
+    inimigo.hp = 0
+
+    res.json({menssage: "Voce venceu",
+        campeao:campeao.hp,
+        inimigo:inimigo.hp
+    })
+}
+
 inimigoJoga()
     
 res.json({message: "Voce atacou", 

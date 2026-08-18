@@ -11,13 +11,14 @@ export function status(req, res) {
 export function atacar(req, res) {
 inimigo.hp = inimigo.hp - campeao.ataque 
 
- //if(inimigo.hpBase < 0 ){
-    //    res.json({message:"inimigo DERROTADOOOOOOOOOOO KRL"})
-  //  }
- //if(campeao.hpBase < 0 ){
-  //      res.json({message:"campeao DERROTADOOOOOOOOOOO KRL"})
-  //  }
+if(inimigo.hp <=0){
+    inimigo.hp = 0
 
+    res.json({menssage: "Voce venceu",
+        campeao:campeao.hp,
+        inimigo:inimigo.hp
+    })
+}
 
 inimigoJoga()
     
@@ -25,6 +26,31 @@ res.json({message: "Voce atacou",
     campeao:campeao.hp,
     inimigo:inimigo.hp
 })
+}
+
+export function defender(req,res){
+    campeao.defesa = 10 
+
+    inimigoJoga()
+    
+    res.json({message: "Voce defendeu",
+campeao:campeao.hp,
+inimigo:inimigo.hp
+
+    })
+}
+
+export function curar(req, res){
+    campeao.hp = campeao.hp + campeao.CuraBase
+
+    if(campeao.hp > campeao.hpBase){
+        campeao.hp = campeao.hpBase
+    }
+
+    res.json({menssage: "Voce curou",
+        campeao:campeao.hp,
+        inimigo:inimigo.hp
+    })
 }
 
 export function inimigoJoga(req, res) {
@@ -46,9 +72,3 @@ campeao.hp = campeao.hp - inimigo.DanoBase
 
     }
 }
-
-
-
-
-
-

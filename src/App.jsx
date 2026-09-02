@@ -14,9 +14,9 @@ function App() {
    <Campeao/>
    <Inimigo/>
 <Routes>
-  <Route path='/' element={Home} ></Route>
-    <Route path='/jogo' element={Jogo} ></Route>
-  <Route path='/resultado' element={Resultado} ></Route>
+  <Route path='/' element={<Home />} />
+    <Route path='/jogo' element={<Jogo />} />
+  <Route path='/resultado' element={<Resultado />} />
 </Routes>
  <Botoes/>
     </>

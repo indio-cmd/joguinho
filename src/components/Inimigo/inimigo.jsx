@@ -1,6 +1,6 @@
 //import '/style.css'
 
-function Inimigo(hp){
+function Inimigo({hp}){
     return(
        <div>
 

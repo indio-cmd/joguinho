@@ -1,6 +1,6 @@
 //import '/style.css'
 
-function Campeao(hp){
+function Campeao({hp}){
     return(
         <div>
 

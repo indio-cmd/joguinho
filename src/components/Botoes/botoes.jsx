@@ -1,6 +1,6 @@
 //import '/style.css'
 
-function Botoes(atacar, defender, curar){
+function Botoes({atacar, defender, curar}){
     return(
         <div>
 

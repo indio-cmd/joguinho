@@ -14,7 +14,7 @@ inimigo.hp = inimigo.hp - campeao.ataque
 if(inimigo.hp <=0){
     inimigo.hp = 0
 
-    res.json({menssage: "Voce venceu",
+    return res.json({mensagem: "Voce venceu",
         campeao:campeao.hp,
         inimigo:inimigo.hp
     })
@@ -22,7 +22,7 @@ if(inimigo.hp <=0){
 
 inimigoJoga()
     
-res.json({message: "Voce atacou", 
+return res.json({mensagem: "Voce atacou", 
     campeao:campeao.hp,
     inimigo:inimigo.hp
 })
@@ -33,9 +33,9 @@ export function defender(req,res){
 
     inimigoJoga()
     
-    res.json({message: "Voce defendeu",
-campeao:campeao.hp,
-inimigo:inimigo.hp
+   return res.json({mensagem: "Voce defendeu",
+    campeao:campeao.hp,
+    inimigo:inimigo.hp
 
     })
 }
@@ -47,28 +47,27 @@ export function curar(req, res){
         campeao.hp = campeao.hpBase
     }
 
-    res.json({menssage: "Voce curou",
+    res.json({mensagem: "Voce curou",
         campeao:campeao.hp,
         inimigo:inimigo.hp
     })
 }
+export function inimigoJoga() {
+    const jogada = Math.floor(Math.random() * 3)
 
-export function inimigoJoga(req, res) {
-    const jogada = 
-    Math.floor(Math.random() *3 )
-
-    if(jogada === 0) {
-campeao.hp = campeao.hp - inimigo.DanoBase
+    if (jogada === 0) {
+        const dano = Math.max(inimigo.DanoBase - campeao.defesa, 0)
+        campeao.hp = campeao.hp - dano
+        if (campeao.hp < 0) campeao.hp = 0
     }
 
-    if(jogada === 1){
+    if (jogada === 1) {
         inimigo.hp = inimigo.hp + inimigo.CuraBase
-    }
-    if(inimigo.hp> inimigo.hpBase){
-        inimigo.hp = inimigo.hpBase
+        if (inimigo.hp > inimigo.hpBase) {
+            inimigo.hp = inimigo.hpBase
+        }
     }
 
-    if(jogada === 2) {
-
-    }
+    
+    campeao.defesa = 0
 }
